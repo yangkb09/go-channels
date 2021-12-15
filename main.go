@@ -20,8 +20,8 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	for { // infinite loop; only loops anytime we receive something through a channel
-		go checkLink(<-c, c)
+	for l := range c { // infinite loop; only loops anytime we receive something through a channel
+		go checkLink(l, c)
 	}
 }
 
